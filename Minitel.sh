@@ -1,6 +1,6 @@
 #!/bin/sh
-## travailler sur la version locale dans ~ puis la copier dans /usr/local/bin/
-## >> sudo cp Minitel.sh /usr/local/bin/
+## attention ce fichier a le même inode que /usr/local/bin/Minitel.sh
+## 
 ## 11/12/2020 d'après https://mars-hack-lab.fr/?p=282
 ## remplacé 4800 par 9600 car je crois que le Minitel supporte 9,6 Kbds
 
