@@ -12,8 +12,11 @@ sudo systemctl enable Minitel
 4. terminer la configuration en liant le shell local et system
 sudo ln Minitel.sh /usr/local/bin/Minitel.sh
 5. pour tester sans attendre le prochain boot: brancher le Minitel sur USB
-// taper sur le clavier du Minitel 2: F(touche Fonction)+Sommaire (pour sortir du menu)
-// puis F+T A (80 col) puis F+T E (pas d'écho local) puis F+P 9 (9600 Bds) 
+// taper sur le clavier du Minitel 2:
+Fnct + Sommaire (bascule en mode peri-informatique ie terminal, sortant du menu du Minitel)
+Fnct + T (en même temps, puis on relâche), puis A
+Fnct + T (en même temps, puis on relâche), puis E
+Fnct + P (en même temps, puis on relâche), puis 9 (9600 Bds) 
 sudo systemctl start Minitel 
 => l'écran du Minitel affiche un terminal linux et le prompt pi@raspberrypi:~$
 6. gérer les accents 
