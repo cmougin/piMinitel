@@ -1,0 +1,16 @@
+    $include /etc/inputrc
+    # Minitel :
+    "\eOM": accept-line # ENVOI
+    "\eOQ": kill-whole-line # ANNULATION
+    "\eOR": beginning-of-history # RETOUR
+    "\eOS": redraw-current-line # REPETITION
+    "\eOl": backward-delete-char # CORRECTION
+    "\eOm": "\001man " # GUIDE
+    "\eOn": end-of-history # SUITE
+    "\e)4\r": end-of-line # TS+C/F
+    "\e[M": kill-whole-line # Sup.L
+    "\e[L": yank # Ins.L
+    "\e[P": delete-char # Sup.C
+    "\e[4h": quoted-insert # Ins.C
+    "\e[H": beginning-of-line # Home
+    "\e[2J": clear-screen # E.Page

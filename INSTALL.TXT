@@ -1,6 +1,34 @@
 How to INSTALL:
 immediately after 1st boot strap (and set-up)
 1. mkdir /home/pi/Minitel
-2. cd /home/pi/Minitel && git clone --branch master https://github.com/cmougin/piMinitel .
-3. 
-/usr/local/bin/Minitel.sh
+2. clone la branche MASTER localement à partir de github:
+cd /home/pi/Minitel && git clone --branch master https://github.com/cmougin/piMinitel .
+3. configure le "service" Minitel en tant que service à initialiser au démarrage (boot)
+sudo ln Minitel.service /etc/systemd/system/Minitel.service
+sudo chmod 640 /etc/systemd/system/Minitel.service
+//pour vérifier: systemctl status Minitel.service => le service est loaded mais disabled
+sudo systemctl daemon-reload
+sudo systemctl enable Minitel
+4. terminer la configuration en liant le shell local et system
+sudo ln Minitel.sh /usr/local/bin/Minitel.sh
+5. pour tester sans attendre le prochain boot: brancher le Minitel sur USB
+// taper sur le clavier du Minitel 2: F(touche Fonction)+Sommaire (pour sortir du menu)
+// puis F+T A (80 col) puis F+T E (pas d'écho local) puis F+P 9 (9600 Bds) 
+sudo systemctl start Minitel 
+=> l'écran du Minitel affiche un terminal linux et le prompt pi@raspberrypi:~$
+6. gérer les accents 
+//wget http://canal.chez.com/mntl.ti => ou ne rien faire pour repartir de la version déjà là
+tic mntl.ti -o /etc/terminfo
+sudo apt-get install screen
+sudo cat screenrc >> /etc/screenrc
+cat .inputrc >>  ~/.inputrc
+7. accrocher le bootstrap.sh au .bashrc pour le lancer à chaque login (https://mars-hack-lab.fr/?p=282)
+echo '
+# Minitel
+    case "$TERM" in
+    m1*|m2*|minitel*)
+    export LC_ALL=C
+    /home/pi/Minitel/bootstrap.sh
+    ;;
+    esac
+    '>> ~/.bashrc
