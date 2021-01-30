@@ -1,4 +1,4 @@
-How to INSTALL:
+How to INSTALL: // testé avec succès le 30/01/2021
 immediately after 1st boot strap (and set-up)
 1. mkdir /home/pi/Minitel
 2. clone la branche MASTER localement à partir de github:
