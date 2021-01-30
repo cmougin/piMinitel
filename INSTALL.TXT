@@ -1,0 +1,6 @@
+How to INSTALL:
+immediately after 1st boot strap (and set-up)
+1. mkdir /home/pi/Minitel
+2. cd /home/pi/Minitel && git clone --branch master https://github.com/cmougin/piMinitel .
+3. 
+/usr/local/bin/Minitel.sh
