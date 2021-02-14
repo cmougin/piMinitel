@@ -35,3 +35,30 @@ echo '
     ;;
     esac
     '>> ~/.bashrc
+8. éventuellement, installer mopidy
+sudo apt install libspotify12 pyspotify
+sudo pip3 install modipy-spotify
+sudo pip3 install Mopidy-Mofidy
+sudo systemctl enable mopidy
+* dans /etc/mopidy/mopidy.conf:
+    [audio]
+    output = alsasink
+    [http]
+    hostname = 0.0.0.0
+    [spotify]
+    username = 111…8 (le user spotify)
+    password = H…s (le mot de passe spotify)
+    client_id = d…a (récupéré ici: https://auth.mopidy.com/spotify/ )
+    client_secret = D…0= (de même)
+    [mopify]
+    enabled = true
+    debug = false
+sudo systemctl restart mopidy
+#vérifier que tout se passe bien:
+sudo mopidyctl config|more #pour regarder la config complète en mémoire
+sudo journalctl -u mopidy|more #pour regarder les logs qui passent sur ce service
+aller sur http://192.168.0.19:6680/mopify (l’IP du minitel, cf ifconfig)
+et activer le SERVICE spotify avant d’utiliser la GUI pour lancer la musique
+#monter aussi les paramètres volumes via l’interface texte:
+alsamixer # master ; utiliser la touche S pour sélectionner headphones par ex
+alsamixer -c 0 # headphones

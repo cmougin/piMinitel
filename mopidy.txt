@@ -1,0 +1,33 @@
+- https://docs.mopidy.com/en/latest/installation/raspberrypi/#how-to-for-raspbian 
+sudo vi /etc/mopidy/mopidy.conf pour modifier les valeurs qui ne sont pas par défaut
+sudo systemctl restart mopidy pour reprendre en compte la config
+sudo mopidyctl config|more pour regarder la config complète en mémoire
+sudo journalctl -u mopidy|more pour regarder les logs qui passent sur ce service
+http://192.168.0.19:6680/mopidy/ affiche une page par défaut
+- d’après https://github.com/mopidy/mopidy-spotify: (dependencies)
+- sudo apt install libspotify12 pyspotify
+- sudo pip3 install modipy-spotify
+- mettre à jour client_id et client_secret récupérés ici: https://auth.mopidy.com/spotify/
+[spotify]
+client_id = The config value will appear here.
+client_secret = The config value will appear here.
+- et compléter la configuration d’après https://github.com/mopidy/mopidy-spotify#configuration 
+For more information see the Mopidy-Spotify docs: https://github.com/mopidy/mopidy-spotify
+sudo pip3 install Mopidy-Mofidy #attention c’est bien Mo-FI-dy la deuxième fois
+(inspiré de https://circuitdigest.com/microcontroller-projects/how-to-run-spotify-on-raspberry-pi-using-mopidy-music-server)
+testé avec succès le 14 02 2021 avec la config suivante:
+* dans /etc/mopidy/mopidy.conf:
+    [audio]
+    output = alsasink
+    [http]
+    hostname = 0.0.0.0
+    [spotify]
+    username = 111…8
+    password = H…s
+    client_id = d…a
+    client_secret = D…0=
+    [mopify]
+    enabled = true
+    debug = false
+ ainsi quand on va sur 192.168.0.19:6680, la page HTTP propose MOPIFY comme client, 
+ avec un lien qui affiche des choses, dès lors que SPOTIFY a été autorisé au niveau des SERVICES
